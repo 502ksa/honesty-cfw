@@ -8,120 +8,118 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
-html, body{
-    margin:0;
-    padding:0;
-    height:100%;
-    width:100%;
-    overflow:hidden;
-    font-family:'Cairo', sans-serif;
-    background:black;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Cairo', sans-serif;
 }
 
-/* خلفية سينمائية */
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#050b18;
+}
+
+/* خلفية */
 .bg{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background: url('https://images.unsplash.com/photo-1520975922284-9c7f1b8c2a9f?auto=format&fit=crop&w=1600&q=80');
-    background-size:cover;
-    background-position:center;
-    filter:brightness(0.35);
-    z-index:-2;
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80');
+  background-size:cover;
+  background-position:center;
+  filter:brightness(0.35);
+  z-index:-2;
 }
 
-/* طبقة تأثير */
 .overlay{
-    position:fixed;
-    width:100%;
-    height:100%;
-    background: radial-gradient(circle, rgba(0,0,0,0.2), rgba(0,0,0,0.85));
-    z-index:-1;
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle, rgba(0,0,0,0.2), rgba(0,0,0,0.9));
+  z-index:-1;
 }
 
-/* Navbar */
+/* navbar */
 .navbar{
-    position:fixed;
-    top:0;
-    width:100%;
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    padding:15px;
-    background:rgba(10,15,30,0.4);
-    backdrop-filter: blur(12px);
-    border-bottom:1px solid rgba(255,255,255,0.08);
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  padding:15px;
+  background:rgba(10,15,30,0.35);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .navbar button{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.1);
-    color:white;
-    padding:10px 16px;
-    border-radius:12px;
-    cursor:pointer;
-    transition:0.3s;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  color:white;
+  padding:10px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.3s;
 }
 
 .navbar button:hover{
-    background:#1e5eff;
-    transform:translateY(-2px);
+  background:#1e5eff;
 }
 
-/* الصفحات */
+/* container */
 .container{
-    position:absolute;
-    top:70px;
-    width:100%;
-    height:calc(100% - 70px);
+  position:absolute;
+  top:70px;
+  width:100%;
+  height:calc(100% - 70px);
 }
 
+/* pages */
 .page{
-    display:none;
-    height:100%;
-    padding:60px;
-    animation:fade 0.5s ease;
+  display:none;
+  height:100%;
+  padding:60px;
+  animation:fade .4s ease;
 }
 
 .active{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+  display:flex;
+  align-items:center;
 }
 
-/* كرت رئيسي */
+/* card */
 .card{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.1);
-    padding:25px;
-    border-radius:18px;
-    backdrop-filter: blur(10px);
-    max-width:600px;
-    box-shadow:0 0 30px rgba(0,0,0,0.4);
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  padding:25px;
+  border-radius:18px;
+  backdrop-filter:blur(12px);
+  max-width:700px;
 }
 
-/* عنوان */
 h1{
-    color:#4aa3ff;
-    font-size:40px;
-    margin:0 0 15px 0;
+  color:#4aa3ff;
+  margin-bottom:10px;
 }
 
-/* نص */
-p{
-    color:#ddd;
+/* زر */
+.btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:10px 15px;
+  background:#1e5eff;
+  color:white;
+  border-radius:10px;
+  text-decoration:none;
 }
 
-/* انيميشن */
 @keyframes fade{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
-/* Glow */
-.glow{
-    color:#4aa3ff;
-    text-shadow:0 0 10px #1e5eff;
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
 }
 </style>
 
@@ -132,77 +130,82 @@ p{
 <div class="bg"></div>
 <div class="overlay"></div>
 
-<!-- Navbar -->
+<!-- NAV -->
 <div class="navbar">
-    <button onclick="show('home')">الرئيسية</button>
-    <button onclick="show('rules')">القوانين</button>
-    <button onclick="show('creators')">صناع المحتوى</button>
-    <button onclick="show('apply')">التقديم</button>
-    <button onclick="show('info')">المعلومات</button>
+  <button onclick="show('home')">الرئيسية</button>
+  <button onclick="show('creators')">صناع المحتوى</button>
+  <button onclick="show('live')">البث المباشر</button>
+  <button onclick="show('team')">الفريق</button>
+  <button onclick="show('shop')">المتجر</button>
+  <button onclick="show('rules')">القوانين</button>
 </div>
 
-<!-- الصفحات -->
 <div class="container">
 
 <!-- الرئيسية -->
 <div id="home" class="page active">
-    <div class="card">
-        <h1 class="glow">Honesty CFW</h1>
-        <p>أقوى تجربة Roleplay احترافية — سيرفر مبني بأسلوب واقعي ونظام متكامل.</p>
-    </div>
-</div>
+  <div class="card">
+    <h1>Honesty CFW</h1>
+    <p>أقوى سيرفر Roleplay احترافي — نظام متكامل وتجربة واقعية.</p>
 
-<!-- القوانين -->
-<div id="rules" class="page">
-    <div class="card">
-        <h1>القوانين</h1>
-        <p>
-        • احترام الجميع<br>
-        • ممنوع RDM / VDM<br>
-        • الالتزام بالرول بلاي<br>
-        • أي مخالفة = عقوبة فورية
-        </p>
-    </div>
+    <a class="btn" onclick="show('team')">اعرف المزيد</a>
+  </div>
 </div>
 
 <!-- صناع المحتوى -->
 <div id="creators" class="page">
-    <div class="card">
-        <h1>صناع المحتوى</h1>
-        <p>
-        إذا كنت صانع محتوى وتبي تعاون مع السيرفر، تواصل مع الإدارة عبر الديسكورد.
-        </p>
-    </div>
+  <div class="card">
+    <h1>صناع المحتوى</h1>
+    <p>نرحب بجميع صناع المحتوى للتعاون مع السيرفر.</p>
+  </div>
 </div>
 
-<!-- التقديم -->
-<div id="apply" class="page">
-    <div class="card">
-        <h1>التقديم</h1>
-        <p>
-        التقديم مفتوح حالياً للمافيا والإدارة<br>
-        كن جزء من أقوى مجتمع RP.
-        </p>
-    </div>
+<!-- البث المباشر -->
+<div id="live" class="page">
+  <div class="card">
+    <h1>البث المباشر</h1>
+    <p>هنا يتم عرض فعاليات السيرفر والبثوث المباشرة.</p>
+  </div>
 </div>
 
-<!-- المعلومات -->
-<div id="info" class="page">
-    <div class="card">
-        <h1>المعلومات</h1>
-        <p>
-        سيرفر احترافي — فعاليات مستمرة — نظام اقتصادي — عصابات — وظائف — إدارة قوية.
-        </p>
-    </div>
+<!-- الفريق -->
+<div id="team" class="page">
+  <div class="card">
+    <h1>الفريق</h1>
+    <p>
+      الإدارة العليا — المشرفين — الدعم الفني — القادة
+    </p>
+  </div>
+</div>
+
+<!-- المتجر -->
+<div id="shop" class="page">
+  <div class="card">
+    <h1>المتجر</h1>
+    <p>شراء رتب — سيارات — مزايا خاصة داخل السيرفر.</p>
+  </div>
+</div>
+
+<!-- القوانين -->
+<div id="rules" class="page">
+  <div class="card">
+    <h1>القوانين</h1>
+    <p>
+      • احترام الجميع<br>
+      • ممنوع RDM / VDM<br>
+      • الالتزام بالرول بلاي<br>
+      • أي مخالفة = عقوبة
+    </p>
+  </div>
 </div>
 
 </div>
 
 <script>
 function show(id){
-    let pages = document.querySelectorAll('.page');
-    pages.forEach(p => p.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+  let pages=document.querySelectorAll('.page');
+  pages.forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
 </script>
 
