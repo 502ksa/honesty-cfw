@@ -54,7 +54,7 @@ body{font-family:'Tajawal',sans-serif;background:#0a0c14;color:#fff;overflow-x:h
 }
 .hero-bg{
   position:absolute;inset:0;
-  background:url([['https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1600&q=80](https://www.pexels.com/photo/a-policeman-standing-beside-white-car-parked-on-the-roadside-13583786/)') center/cover no-repeat;
+  background:url(https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1920&q=80) center/cover no-repeat;
   z-index:0;
 }
 .hero-bg::after{
