@@ -6,89 +6,131 @@
 <title>Honesty CFW</title>
 
 <style>
-body {
-    margin: 0;
+body{
+    margin:0;
     font-family: Arial;
-    background: #0b1a2f;
-    color: white;
+    background:#071a33;
+    color:white;
 }
 
-/* الهيدر */
-header {
-    background: #0f2d4f;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* الشريط العلوي */
+.navbar{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    background:#0c2a4d;
+    padding:15px;
+    position:sticky;
+    top:0;
 }
 
-header h1 {
-    margin: 0;
-    color: #4aa3ff;
-    font-size: 22px;
+.navbar button{
+    background:#1e5eff;
+    border:none;
+    padding:10px 15px;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
 }
 
-/* زر */
-button {
-    background: #1e5eff;
-    border: none;
-    padding: 10px 15px;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
+.navbar button:hover{
+    background:#144bd1;
 }
 
-button:hover {
-    background: #144bd1;
+/* الأقسام */
+.section{
+    display:none;
+    padding:30px;
+    animation: fade 0.3s ease-in-out;
 }
 
-/* القائمة */
-.container {
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
+.active{
+    display:block;
 }
 
-.card {
-    background: #102a4a;
-    padding: 15px;
-    border-radius: 12px;
-    border: 1px solid #1e5eff33;
+h1{
+    color:#4aa3ff;
 }
 
-.card h3 {
-    margin-top: 0;
-    color: #4aa3ff;
+.box{
+    background:#0f2f55;
+    padding:15px;
+    border-radius:12px;
+    margin-top:10px;
+}
+
+/* حركة بسيطة */
+@keyframes fade{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
 }
 </style>
 
 </head>
 <body>
 
-<header>
-    <h1>Honesty CFW</h1>
-    <button onclick="alert('تم الدخول')">دخول السيرفر</button>
-</header>
-
-<div class="container">
-
-    <div class="card">
-        <h3>القوانين</h3>
-        <p>هنا يتم عرض قوانين السيرفر بشكل مرتب.</p>
-    </div>
-
-    <div class="card">
-        <h3>التقديم</h3>
-        <p>التقديم مفتوح حالياً للمافيا والإدارة.</p>
-    </div>
-
-    <div class="card">
-        <h3>المعلومات</h3>
-        <p>سيرفر Roleplay احترافي مع نظام متكامل.</p>
-    </div>
-
+<!-- الأزرار -->
+<div class="navbar">
+    <button onclick="show('home')">الرئيسية</button>
+    <button onclick="show('rules')">القوانين</button>
+    <button onclick="show('creators')">صناع المحتوى</button>
+    <button onclick="show('apply')">التقديم</button>
+    <button onclick="show('info')">المعلومات</button>
 </div>
+
+<!-- الصفحة الرئيسية -->
+<div id="home" class="section active">
+    <h1>Honesty CFW</h1>
+    <div class="box">
+        مرحبًا بك في سيرفر Honesty CFW  
+        تجربة Roleplay احترافية ومميزة.
+    </div>
+</div>
+
+<!-- القوانين -->
+<div id="rules" class="section">
+    <h1>القوانين</h1>
+    <div class="box">
+        1- احترام الجميع<br>
+        2- ممنوع السب أو التخريب<br>
+        3- الالتزام بالرول بلاي<br>
+        4- مخالفة القوانين = عقوبة
+    </div>
+</div>
+
+<!-- صناع المحتوى -->
+<div id="creators" class="section">
+    <h1>صناع المحتوى</h1>
+    <div class="box">
+        إذا تبي تكون صانع محتوى في السيرفر:<br>
+        تواصل مع الإدارة وقدم طلبك.
+    </div>
+</div>
+
+<!-- التقديم -->
+<div id="apply" class="section">
+    <h1>التقديم</h1>
+    <div class="box">
+        التقديم مفتوح حالياً للمافيا والإدارة<br>
+        تابع الديسكورد للتفاصيل.
+    </div>
+</div>
+
+<!-- المعلومات -->
+<div id="info" class="section">
+    <h1>المعلومات</h1>
+    <div class="box">
+        سيرفر مبني بشكل احترافي مع فعاليات مستمرة ونظام قوي.
+    </div>
+</div>
+
+<script>
+function show(id){
+    let sections = document.querySelectorAll('.section');
+    sections.forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+</script>
 
 </body>
 </html>
